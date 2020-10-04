@@ -1,0 +1,518 @@
+
+<script type="text/javascript" src="/utickets/scripts/bwip-js/dist/bwip-js.js"></script>
+<script type="text/javascript" src="/utickets/scripts/bwip-js/lib/symdesc.js"></script>
+<script type="text/javascript" src="/utickets/scripts/bwip-js/examples/drawing-example.js"></script>
+
+
+
+<div class="content">
+  <div class="container-xl">
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col-auto">
+          <div class="page-pretitle">
+            Overview of
+          </div>
+          <h2 class="page-title">
+            Ticket
+          </h2>
+        </div>
+        <div class="col-auto ml-auto d-print-none">
+          <span class="d-none d-sm-inline">
+              <a href="#" class="btn btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><rect x="13" y="8" width="8" height="12" rx="1"></rect><path d="M18 8v-3a1 1 0 0 0 -1 -1h-13a1 1 0 0 0 -1 1v12a1 1 0 0 0 1 1h9"></path><line x1="16" y1="9" x2="18" y2="9"></line></svg>
+                Request a design
+              </a>
+          </span>
+          <a href="#" class="btn btn-primary"> 
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="17" x2="12" y2="17.01"></line><path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4"></path></svg>               
+                 Need help
+          </a>
+          <a href="#" class="btn btn-primary ml-3 d-sm-none btn-icon" data-toggle="modal" data-target="#modal-report" aria-label="Create new report">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+            
+    <div class="row">
+      <div class="col-lg-5 col-sm-12 p-0 p-sm-0 bg-light">
+        <div class="card bg-dark-lt p-0 flex-row">
+          <ul class="nav nav-tabs col-lg-3 col-sm-2 flex-column" data-toggle="tabs">
+                    <li class="nav-item">
+                      <a href="#tabs-tickets" class="nav-link active" data-toggle="tab">
+                       <i class="icofont-ticket  icofont-2x"> &nbsp;</i>Upload Tickets</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#tabs-barcode" onclick="movebar()" class="nav-link" data-toggle="tab">
+                       <i class="icofont-qr-code icofont-2x"> &nbsp;</i>Add Barcode</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#tabs-serial-number" class="nav-link" data-toggle="tab">
+                       <i class="icofont-numbered  icofont-2x"> &nbsp;</i> Serial number</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#tabs-settings" class="nav-link" data-toggle="tab">
+                       <i class="icofont-settings-alt  icofont-2x"> &nbsp;</i>Ticket settings</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#tabs-profile-ex4" class="nav-link" data-toggle="tab">
+                       <i class="icofont-print  icofont-2x"> &nbsp;</i><STRong>Print preview</STRong> </a>
+                    </li>
+          </ul>
+          <div class="card-body col col-sm-12 col-lg-9 bg-white p-0 text-black">
+                    <form action="../addticket/<%- eventname %>" method="post" class="needs-validation" novalidate>
+                      <div class="tab-content">
+                        <div class="card tab-pane active show" id="tabs-tickets">
+                          <div class="card-body form-group row flex-column">
+                              <div class="col">
+                                <label class="form-label text-dark required">Ticket Name (eg: regural, vip, premium etc...)</label>
+                                <div class="input-group">
+                                  <input list="datalistOptions" class="form-control" placeholder="Ticket name" name="ticketname" required id="">
+                                  <datalist id="datalistOptions">
+                                    <option value="Regural"/>
+                                    <option value="VIP"/>
+                                    <option value="VVIP"/>
+                                    <option value="Table"/>
+                                    <option value="Invitation"/>
+                                  </datalist>
+                                  <span class="input-group-text">
+                                    <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Event type consist of what we be done in that event, you must choose from provided options.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                                  </span>
+                                  <div class="invalid-feedback">Please enter the ticket name</div>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <label class="form-label text-dark required">Ticket price and currency</label>
+                                <div class="input-group">
+                                  <input type="number" class="form-control"  placeholder="Price" name="price" value="" min="1" max="10000000" required>
+                                  <input list="datalistcurrency" class="form-control"  placeholder="Currency" name="currency" value="" required>
+                                  <datalist id="datalistcurrency">
+                                    <option value="RWF"/>
+                                    <option value="USD"/>
+                                    <option value="EUR"/>
+                                    <option value="TZS"/>
+                                    <option value="UGS"/>
+                                  </datalist>
+                                  <span class="input-group-text">
+                                    <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Event type consist of what we be done in that event, you must choose from provided options.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                                  </span>
+                                  <div class="invalid-feedback">Please enter the ticket pric</div>
+                                </div>
+                              </div>
+                              
+                              
+                              <div class="col">
+                                <label class="form-label text-dark required">Number of ticket needed</label>
+                                <div class="input-group">
+                                  <input type="number" class="form-control" min="100" max="100000" name="numberoftickets" id="numberoftickets" placeholder="Number of tickets" pattern="[0-9]+(\\.[0-9][0-9]?)?" required>
+                                  <span class="input-group-text">
+                                      <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;VIP  ticket Price is the cost of VIP  tickets, it should be only numbers. &lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                                    </span>
+                                  <div class="invalid-feedback">Invalid number of tickets</div>
+                                </div>
+                              </div>
+                              <div class="col mb-3">
+                                <label class="form-label text-dark required">Ticket size</label>
+                                <div class="input-group">
+                                  <select name="ticketsize" onchange="customise()" id="ticketsize" data-placement="Choose ticket size" id="ticketsize" class="form-select" required>
+                                    <option value="" disabled selected>Select ticket size</option>
+                                    <option value="Small">Small</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Large">Large</option>
+                                    <option value="Customise">Customise</option>
+                                  </select>
+                                  <span class="input-group-text">
+                                    <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Event type consist of what we be done in that event, you must choose from provided options.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                                  </span>
+                                  <div class="invalid-feedback">Please choose the ticket size</div>
+                                </div>
+                                
+                                <div class="col" id="customisediv" hidden>
+                                  <label class="form-label">Ticket width and height values in cm</label>
+                                  <div class="input-group mb-2" >
+                                    <span class="input-group-text bg-light">
+                                      Height
+                                    </span>
+                                    <input type="number" class="form-control" placeholder="14"  min=10 max=50 step=1 name="twidtg" id="twidtg" >
+                                    <span class="input-group-text bg-light">
+                                      Width
+                                    </span>
+                                    <input type="number" class="form-control" placeholder="5" min=10 max=50 step=1 name="theight" id="theight" >
+                                    <span class="input-group-text">
+                                      <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Event type consist of what we be done in that event, you must choose from provided options.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                                    </span>
+                                  </div>
+                                  
+                                </div>
+
+                                <div class="form-label text-dark required">Event artwork image</div>
+                                  <div class="input-group">
+                                    
+                                    <div class="form-file">
+                                      <input type="file" name="ticketart" class="form-file-input" value="" onchange="readURL(this);" id="customFile" required accept="image/*">
+                                      <div class="invalid-feedback">Please upload image</div>
+                                      <label class="form-file-label" for="customFile">
+                                        <label class="form-file-text" id="infoArea">Choose image</label>
+                                        <span class="form-file-button">Browse</span>
+                                      </label>
+                                    </div>
+                      
+                                      <span class="input-group-text">
+                                        <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Event type consist of what we be done in that event, you must choose from provided options.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                                      </span>
+                                   
+                                  </div>
+                                </div>
+                              
+                          </div>
+                              
+                        </div>
+                        <div class="card tab-pane" id="tabs-barcode">
+                            <div class="row card-body flex-column pb-2">
+                                <div class="col">
+                                  <label class="form-label">Barcode type 
+                                  </label>
+                                  <div class="input-group">
+                                    <select class="form-control"  name="symbol"  id="symbol" onmouseleave="render()"></select>
+                                    <button type="button"   class="btn btn-white" onclick="render()" >Show</button>
+                                    <span class="input-group-text bg-white-overlay">
+                                      <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Event type consist of what we be done in that event, you must choose from provided options.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                                    </span>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <label class="form-label">Barcode width and height</label>
+                                  <div class="input-group mb-2">
+                                    <span class="input-group-text bg-light">
+                                      Height
+                                    </span>
+                                    <input type="number" class="form-control"  min=1 max=5 step=0.5 name="scaleX" id="scaleX" onclick="render()">
+                                    <span class="input-group-text bg-light">
+                                      Width
+                                    </span>
+                                    <input type="number" class="form-control"  min=0.5 max=5 step=0.5 name="scaleY" id="scaleY" onclick="render()">
+                                    <span class="input-group-text bg-white-overlay">
+                                      <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Event type consist of what we be done in that event, you must choose from provided options.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                                    </span>
+                                  </div>
+                                </div>
+                                
+                                  
+                                <div class="col pt-1" hidden>
+                                    <div class="input-group">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupPrepend33">Bar Text</span>
+                                      </div>
+                                      <input id="symtext" class="form-control" name="" type="text">
+                                    </div>
+                                </div>
+                
+                                <div class="col pt-1" hidden>
+                                    <div class="input-group">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupPrepend33">Alt Text</span>
+                                      </div>
+                                      <input id="symaltx" class="form-control" name="" type="text">
+                                    </div>
+                                </div>
+                
+                                <div class="col pt-1" hidden>
+                                    <div class="input-group">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupPrepend33">Options</span>
+                                      </div>
+                                      <input id="symopts" class="form-control" name="" type="text">
+                                    </div>
+                                </div>
+                                
+                                
+                                
+                                <div class="col-lg-12">
+                                  <div class="input-group">
+                                    <ul class="list-inline">
+                                      <li class="list-inline-item">
+                                        <label class="form-label">Barcode color</label>
+                                      <input type="color" class="form-control form-control-color" value="#206bc4" title="Choose your color">
+                                      </li>
+                                      <li class="list-inline-item">
+                                        <label class="form-label">Background color</label>
+                                        <input type="color" class="form-control form-control-color" value="#FFFFFF" name="bgcolor" title="Choose barcode background color">
+                                      </li>
+                                      <li class="list-inline-item">
+                                        <label class="form-label">Border color</label>
+                                        <input type="color" class="form-control form-control-color" value="#FFFFFF" name="bordercolor" title="Choose barcode border color">
+                                      </li>
+                                    </ul>                                    
+                                    
+                                  </div>
+                                </div>
+                              
+                                  <div class="row mt-2">
+                                    <div class="col-lg-6 col-sm-6 col-md-6">
+                                      <label class="form-label" for="">
+                                        <span class="input-group-text text-dark p-0 border-0 bg-white-overlay">
+                                          Rotation &nbsp;<span class="form-help input-group-text" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Event type consist of what we be done in that event, you must choose from provided options.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                                        </span>
+                                        </label>
+                                      <div class="input-group flex-column">
+                                        <label for="rotateN" class="form-check form-check-inline">
+                                          <input type="radio" class="form-check-input" name="rotate" value="N" id="rotateN" onchange="render()" checked>Normal
+                                        </label>
+                                        <label for="rotateR" class="form-check form-check-inline">
+                                            <input type="radio" class="form-check-input" name="rotate" value="R" id="rotateR" onchange="render()">Right
+                                        </label>
+                                        <label for="rotateL" class="form-check form-check-inline">
+                                            <input type="radio" class="form-check-input" name="rotate" value="L" id="rotateL" onchange="render()">Left
+                                        </label>
+                                        <label for="rotateI" class="form-check form-check-inline">
+                                            <input type="radio" class="form-check-input" name="rotate" value="I" id="rotateI" onchange="render()">Invert
+                                        </label>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-6 col-md-6">
+                                      <label class="form-label" for="">
+                                          Position 
+                                      </label>
+                                        <div class="input-group mt-2">
+                                          <span class="input-group-text bg-light">
+                                            X
+                                          </span>
+                                          <input type="text" value="0" class="form-control" name="cordx"  id="cordx">
+                                        </div>
+                                        <div class="input-group mt-3">
+                                          <span class="input-group-text bg-light">
+                                            Y
+                                          </span>
+                                          <input type="text" value="0" class="form-control" name="cordy"  id="cordy">
+                                        </div>
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="card-footer  bg-white">
+                              <div class="row align-items-center">
+                                <div class="col-auto">
+                                  <span class="badge bg-green">
+                                    Use barcode
+                                    <span class="badge-addon ">Priced</span>
+                                  </span>
+                                </div>
+                                <div class="col-auto ml-auto">
+                                  <label class="form-check form-switch m-0">
+                                    <input class="form-check-input position-static" type="checkbox" name="usebarcode" checked>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card p-0 card-md tab-pane" id="tabs-serial-number">
+                            <div class="card-body flex-column">
+                              <div class="col">
+                                <label class="form-label text-dark required">Serial number type</label>
+                                <div class="input-group">
+                                  <select name="" id="" class="form-select" required>
+                                    <option value="" selected disabled>Choose serial number</option>
+                                    <option value="randomn">Random numbers</option>
+                                    <option value="randoms">Random string</option>
+                                    <option value="ince1">Increment 1</option>
+                                  </select>
+                                  <span class="input-group-text">
+                                    <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Event type consist of what we be done in that event, you must choose from provided options.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                                  </span>
+                                  <div class="invalid-feedback">Please choose serial number type size</div>
+                                </div>
+                              </div>
+                              <div class="mb-3">
+                                <p class="pt-2"><cite><strong>Note: </strong> Normal serial number will automaticall be included as you choose serial number type</cite></p>
+                                
+                                <div class="form-label">Stub</div>
+                                <label class="form-check form-switch">
+                                  <input class="form-check-input" type="checkbox" checked>
+                                  <span class="form-check-label">include stub serial number</span>
+                                </label>
+                              </div>
+                              <div class="row ">
+                                <div class="col-5">
+                                <label class="form-label" for="">Margin for header</label>
+                                
+                                  <div class="row flex-column">
+                                    <div class="col-12 d-flex">
+                                      <div class="col-5"><input type="number" value="0" hidden disabled class="form-control" name="" id=""></div>
+                                      <div class="col-5"><input type="number" value="0" class="form-control" name="" id=""></div>
+                                      <div class="col-5"><input type="number" value="0" disabled class="form-control" hidden name="" id=""></div>
+                                    </div>
+                                    <div class="col-12 d-flex">
+                                      <div class="col-5"><input type="number" value="0" class="form-control" name="" id=""></div>
+                                      <div class="col-5 align-self-center pl-2">
+                                      </div>
+                                      <div class="col-5"><input type="number" value="0" class="form-control" name="" id=""></div>
+                                    </div>
+                                    <div class="col-12 d-flex">
+                                      <div class="col-5"><input type="number" disabled value="0" class="form-control" hidden name="" id=""></div>
+                                      <div class="col-5"><input type="number" value="0" class="form-control" name="" id=""></div>
+                                      <div class="col-5"><input type="number" disabled value="0" class="form-control" hidden name="" id=""></div>
+                                    </div>
+                                  </div>
+                                
+                                </div>
+                                <div class="col-5 ml-2">
+                                <label class="form-label" for="">Margin for footer</label>
+                                
+                                  <div class="row flex-column">
+                                    <div class="col-12 d-flex">
+                                      <div class="col-5"><input type="number" value="0" hidden disabled class="form-control" name="" id=""></div>
+                                      <div class="col-5"><input type="number"  class="form-control" name="" id=""></div>
+                                      <div class="col-5"><input type="number" value="0" disabled class="form-control" hidden name="" id=""></div>
+                                    </div>
+                                    <div class="col-12 d-flex">
+                                      <div class="col-5"><input type="number" value="0" class="form-control" name="" id=""></div>
+                                      <div class="col-5 align-self-center pl-2">
+                                      </div>
+                                      <div class="col-5"><input type="number" value="0" class="form-control" name="" id=""></div>
+                                    </div>
+                                    <div class="col-12 d-flex">
+                                      <div class="col-5"><input type="number" disabled value="0" class="form-control" hidden name="" id=""></div>
+                                      <div class="col-5"><input type="number" value="0" class="form-control" name="" id=""></div>
+                                      <div class="col-5"><input type="number" disabled value="0" class="form-control" hidden name="" id=""></div>
+                                    </div>
+                                  </div>
+                                
+                              </div>
+                              </div>
+                              
+                            </div>
+                            <div class="card-footer">
+                              <div class="row align-items-center">
+                                <div class="col-auto">
+                                  <span class="badge bg-green">
+                                    Use serial number
+                                    <span class="badge-addon ">Free</span>
+                                  </span>
+                                  
+                                </div>
+                                
+                                <div class="col-auto ml-auto">
+                                  <label class="form-check form-switch m-0">
+                                    <input class="form-check-input position-static" type="checkbox" checked>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+
+
+                        <div class="card p-0 card-md tab-pane" id="tabs-settings">
+                          <div class="card-body">
+                            <div class="col">
+                              <label class="form-label text-dark required">Tickets barcode key</label>
+                              <div class="input-group">
+                                <select name="" id="" class="form-select" required>
+                                  <option value="randomn">Letters only</option>
+                                  <option value="randoms">Numbers only</option>
+                                  <option value="ince1" >Numbers and letters</option>
+                                  <option value="">encrypted characters</option>
+                                  <option value="" selected>Hashed numbers (Default)</option>
+                                </select>
+                                <span class="input-group-text">
+                                  <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Event type consist of what we be done in that event, you must choose from provided options.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                                </span>
+                                <div class="invalid-feedback">Please choose the ticket barcode key</div>
+                              </div>
+                            </div>
+                            <div class="mb-3">
+                              <p class="pt-2"><cite><strong>Note: </strong> Hashed numbes is choosen as default</cite></p>
+                              
+                              
+                            </div>
+                            <div class="col-7">
+                              <label class="form-label" for="">Margin</label>
+                              
+                                <div class="row pr-4 flex-column">
+                                  <div class="col-12 d-flex">
+                                    <div class="col-5"><input type="number" value="0" hidden disabled class="form-control" name="" id=""></div>
+                                    <div class="col-5"><input type="number" value="0" class="form-control" name="" id=""></div>
+                                    <div class="col-5"><input type="number" value="0" disabled class="form-control" hidden name="" id=""></div>
+                                  </div>
+                                  <div class="col-12 d-flex">
+                                    <div class="col-5"><input type="number" value="0" class="form-control" name="" id=""></div>
+                                    <div class="col-5 align-self-center pl-2">
+                                    </div>
+                                    <div class="col-5"><input type="number" value="0" class="form-control" name="" id=""></div>
+                                  </div>
+                                  <div class="col-12 d-flex">
+                                    <div class="col-5"><input type="number" disabled value="0" class="form-control" hidden name="" id=""></div>
+                                    <div class="col-5"><input type="number" value="0" class="form-control" name="" id=""></div>
+                                    <div class="col-5"><input type="number" disabled value="0" class="form-control" hidden name="" id=""></div>
+                                  </div>
+                                </div>
+                              
+                            </div>
+
+                          </div>
+                          <div class="card-footer">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+                                <span class="badge bg-green">
+                                  Use serial number
+                                  <span class="badge-addon ">Free</span>
+                                </span>
+                                
+                              </div>
+                              
+                              <div class="col-auto ml-auto">
+                                <label class="form-check form-switch m-0">
+                                  <input class="form-check-input position-static" type="checkbox" checked>
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                        
+                      </div>
+                      <div class="row">
+                        <div class="card-footer pt-0 border-0">
+                          <div class="align-content-center flex-column">
+                            <button class="btn float-right btn-square btn-primary ">
+                              Save
+                            </button>
+                            <a href="#" class="btn btn-link ">
+                              Reset to defaults
+                            </a>
+                          </div>    
+                        </div>
+                      </div>
+                    </form>         
+          </div>
+        </div>
+              
+                
+        
+      </div>
+      <div class="col-auto">
+              <div class="row">
+                  <div class="card card-sm bg-transparent">
+                    <div class="input-group">
+                      <div class="mt-4"></div>
+                        <div id="container">
+                          <img id="imageResult" src="/img/services/KCCC.jpg" alt="" class="contback">
+                          <div class="ball fixed-top">
+                            <canvas id="canvas" width=1 height=1 style="background: rgb(255, 255, 255); padding: 3px; visibility:hidden"></canvas>
+                            <div id="output"  style="white-space:pre"></div></div>
+                        </div>
+                      </div>
+                    
+                  </div>
+                
+               
+              </div>
+      </div>
+    </div>
+    
+  </div>
+</div>    
+
+	
+
+  <script src="/dist/libs/nymove/draggable.js"></script>
+  <script src="/dist/js/nymove.js"></script>

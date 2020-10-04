@@ -1,0 +1,52 @@
+<div class="flex-fill d-flex flex-column justify-content-center py-5">
+    <div class="container col-md-3">
+      <form class="card card-md bg-light pb-4" action="/login" method="POST">
+        <div class="card-body">
+          <h2 class="mb-5 text-center">Login to UTickets</h2>
+          
+          <div class="mb-3">
+            <label class="form-label">Username</label>
+                <div class="input-icon mb-3">
+                <span class="input-icon-addon">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4" /><path d="M5.5 21v-2a4 4 0 0 1 4 -4h5a4 4 0 0 1 4 4v2" /></svg>
+                </span>
+                <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
+              </div>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">
+              Password
+              <span class="form-label-description">
+                <a href="/forgotpassword">I forgot password</a>
+              </span>
+            </label>
+                 <div class="mb-3">
+                    <div class="input-icon mb-3">
+                    <span class="input-icon-addon">
+                        <svg class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><rect x="5" y="11" width="14" height="10" rx="2"></rect><circle cx="12" cy="16" r="1"></circle><path d="M8 11v-4a4 4 0 0 1 8 0v4"></path></svg>
+                    </span>
+                    <input  type="password" name="password" placeholder="Password" class="form-control" id="password" required>
+                  </div>
+                </div>
+          </div>
+          
+          <div class="form-footer">
+            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+          </div>
+        </div>
+        <div class="hr-text"></div>
+        <div class="card-body">
+            <div class="text-center text-muted">
+                Don't have account yet? <a href="/register" tabindex="-1"><strong>Register</strong> </a>
+              </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+        
+  
+       
+            
+    </div>
+</div>

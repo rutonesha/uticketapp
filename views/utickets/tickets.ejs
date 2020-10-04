@@ -1,0 +1,361 @@
+
+ <% if (alltickets.length > 0){ %>
+<section>
+  <div class="content">
+    <div class="container-xl">
+      <div class="jumbotron">
+       
+        <div class="list-group-item p-0 bg-white-overlay">
+          <div class="row row-sm align-items-center">
+            <div class="row row-sm align-items-center">
+              <div class="col-auto">
+                <img src="/utickets/<%- allevents.artworkdata %>" class="rounded" alt="Event name" width="48" height="48">
+              </div>
+              <div class="col text-uppercase text-dark strong">
+                <%- allevents.ename %>
+                <div class="text-muted">
+                  <%- allevents.perfomernames %>
+                </div>
+              </div>
+              
+              <div class="float-right col-auto">      
+                <nav class="navbar navbar-expand-lg bg-transparent">
+                  <div class="container-fluid">
+                    <a class="nav-pills nav-item navbar-brand" href="#"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="nav nav-pills pl-3" >
+                        
+                        <li class="nav-item mr-auto ">
+                            <a class="nav-link btn btn-white btn-square active" href="/utickets/tickets/<%- allevents.ename %>">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><line x1="15" y1="5" x2="15" y2="7"></line><line x1="15" y1="11" x2="15" y2="13"></line><line x1="15" y1="17" x2="15" y2="19"></line><path d="M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-3a2 2 0 0 0 0 -4v-3a2 2 0 0 1 2 -2"></path></svg>                    
+                              Tickets
+                            </a>
+                        </li>
+                        <li class="nav-item mr-auto ">
+                            <a class="nav-link btn btn-white btn-square" id="printing-tab" href="/utickets/printing/<%- allevents.ename %>">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><path d="M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2"></path><path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4"></path><rect x="7" y="13" width="10" height="8" rx="2"></rect></svg>                    
+                              Printing</a>
+                        </li>
+                        <li class="nav-item mr-auto ">
+                            <a class="nav-link btn btn-white btn-square" href="/utickets/selling/<%- allevents.ename %>">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><circle cx="9" cy="19" r="2"></circle><circle cx="17" cy="19" r="2"></circle><path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2"></path></svg>                    
+                              Selling</a>
+                        </li>
+                        <li class="nav-item mr-auto ">
+                            <a class="nav-link btn btn-white btn-square" id="check-in-tab" data-toggle="tab" href="#check-in" role="tab" aria-controls="check-in" aria-selected="false">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><polyline points="9 11 12 14 20 6"></polyline><path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"></path></svg>                    
+                              Check-in</a>
+                        </li>
+                        <li class="nav-item mr-auto btn-square">
+                            <a class="nav-link btn btn-white btn-square" id="check-in-tab" data-toggle="tab" href="#check-in" role="tab" >
+                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><rect x="3" y="5" width="18" height="14" rx="3"></rect><line x1="3" y1="10" x2="21" y2="10"></line><line x1="7" y1="15" x2="7.01" y2="15"></line><line x1="11" y1="15" x2="13" y2="15"></line></svg>                    
+                              Payments</a>
+                        </li>
+                        <!-- <li class="nav-item mr-auto btn-square">
+                          <a class="nav-link btn btn-white btn-square" id="check-in-tab" data-toggle="tab" href="#check-in" role="tab" >
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><circle cx="12" cy="12" r="3"></circle></svg>                            
+                            Settings</a>
+                      </li> -->
+                      </ul>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <h1 class="display-4">
+          Tickets
+          <div class="col-auto ml-auto float-right">
+          
+            <a href="/utickets/tickets/addticket/<%- allevents.ename %>" class="btn btn-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              Add ticket
+            </a>
+          
+            <a href="#" class="btn btn-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><rect x="13" y="8" width="8" height="12" rx="1"></rect><path d="M18 8v-3a1 1 0 0 0 -1 -1h-13a1 1 0 0 0 -1 1v12a1 1 0 0 0 1 1h9"></path><line x1="16" y1="9" x2="18" y2="9"></line></svg>
+              Designing help
+            </a>
+          
+          </div>
+        </h1>
+        </div>
+
+        <div class="row">
+          <% for( var i = 0; i < alltickets.length; i++ ) { %>
+            <div class="col-sm-6 col-lg-3">
+              <div class="card">
+                <div class="ribbon mt-0 p-1 pb-0 bg-blue">
+                  <span class="badge bg-blue-lt">
+                    Price: 
+                    <span class="badge-addon bg-info"><%- alltickets[i].price %>  <%- alltickets[i].currency %></span>
+                  </span>
+                </div>
+                <div class="card-header bg-gray-dark-lt">
+                  <div class="mr-3 lh-sm">
+                    <div class="strong">
+                      <div class="text-uppercase"> <%- alltickets[i].ticketname %></div>
+                    </div>
+                    <div class="text-muted">
+                      <span class="badge bg-blue-lt">
+                        Size: 
+                        <span class="badge-addon bg-info"><%- alltickets[i].ticketsize %></span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body pr-3 pt-1 pb-1 pl-3">
+                  <div class="card card-sm p-0 pb-1 m-1">
+                    <div class="card-body d-flex align-items-center p-1">
+                      <span class="bg-blue text-white stamp mr-3">
+                        <I class="icofont-ticket icofont-2x"></I>
+                      </span>
+                      <div class="mr-3 lh-sm">
+                        <div class="strong">
+                          <%- alltickets[i].numberoftickets %>
+                        </div>
+                        <div class="text-muted">Tickets</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card card-sm p-0 pb-1 m-1">
+                    <div class="card-body d-flex align-items-center p-1">
+                      <span class="bg-blue text-white stamp mr-3">
+                        <I class="icofont-print icofont-2x"></I>
+                      </span>
+                      <div class="mr-3 lh-sm">
+                        <div class="strong">
+                          120
+                        </div>
+                        <div class="text-muted">Printed</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card card-sm p-0  m-1">
+                    <div class="card-body d-flex align-items-center p-1">
+                      <span class="bg-blue text-white stamp mr-3">
+                        <I class="icofont-cart-alt icofont-2x"></I>
+                      </span>
+                      <div class="mr-3 lh-sm">
+                        <div class="strong">
+                          120
+                        </div>
+                        <div class="text-muted">Sold</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer bg-gray-lt ">
+                  <div class="col-12">
+                    <a class="btn text-white btn-danger btn-icon" data-toggle="modal" data-target="#deletemodal<%- alltickets[i].ticketid %>">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><line x1="4" y1="7" x2="20" y2="7"></line><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path></svg>              
+                    </a>
+                    <a class="btn float-right btn-white mr-2 btn-icon" href="">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><path d="M10 3.2a9 9 0 1 0 10.8 10.8a1 1 0 0 0 -1 -1h-6.8a2 2 0 0 1 -2 -2v-7a.9 .9 0 0 0 -1 -.8"></path><path d="M15 3.5a9 9 0 0 1 5.5 5.5h-4.5a1 1 0 0 1 -1 -1v-4.5"></path></svg>              
+                    </a>
+                    
+                    <a class="btn float-right btn-white mr-2 btn-icon" href="/utickets/tickets/samples/<%- allevents.eventid %>/<%- alltickets[i].ticketid %>">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><path d="M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2"></path><path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4"></path><rect x="7" y="13" width="10" height="8" rx="2"></rect></svg>              
+                    </a>
+                    <a class="btn float-right btn-white mr-2 ml-2 btn-icon" href="">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3"></path><path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3"></path><line x1="16" y1="5" x2="19" y2="8"></line></svg>              
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+            <div class="modal modal-blur fade text-dark" id="deletemodal<%- alltickets[i].ticketid %>" tabindex="-1" role="dialog" aria-hidden="true">
+              <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header bg-danger text-white">
+                    <span class=""><i class="icofont-recycling-man icofont-2x"></i>&nbsp;&nbsp; </span>
+                    <strong class="mr-auto">Procced to delete ticket?</strong>
+                    <button type="button" class="close text-white" data-dismiss="modal"><i class="icofont-close-line"></i></button>
+                  </div>
+                  <div class="modal-body lh-sm">
+                    If you proceed,  you will lose all the <strong class="text-uppercase"><%- alltickets[i].ticketname %></strong> ticket and its related data!
+                  </div>
+                  <div class="modal-footer border-dark">
+                    <button type="button" class="btn btn-white mr-auto" data-dismiss="modal">Cancel</button>
+                    <a href="/utickets/tickets/deleteticket/<%- allevents.eventid %>/<%- alltickets[i].ticketid %>"  class="btn btn-danger" >
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><line x1="4" y1="7" x2="20" y2="7"></line><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path></svg>
+                      Yes, Delete the event
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+          <% } %>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+<% } else { %>
+  <div class="content">
+    <div class="container-xl d-flex flex-column justify-content-center">
+      <div class="list-group-item p-0 mb-3 bg-white-overlay">
+        <div class="row row-sm align-items-center">
+          <div class="row row-sm align-items-center">
+            <div class="col-auto">
+              <img src="/utickets/<%- allevents.artworkdata %>" class="rounded" alt="Event name" width="48" height="48">
+            </div>
+            <div class="col text-uppercase text-dark strong">
+              <%- allevents.ename %>
+              <div class="text-muted">
+                <%- allevents.perfomernames %>
+              </div>
+            </div>
+            
+            <div class="float-right col-auto">      
+              <nav class="navbar navbar-expand-lg bg-transparent">
+                <div class="container-fluid">
+                  <a class="nav-pills nav-item navbar-brand" href="#"></a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="col-auto ml-auto float-right">
+        
+                      <a href="/utickets/tickets/addticket/<%- allevents.ename %>" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        Add ticket
+                      </a>
+                    
+                      <a href="#" class="btn btn-primary"> 
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="17" x2="12" y2="17.01"></line><path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4"></path></svg>               
+                          Need help
+                      </a>
+                    
+                    </div>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="empty bg-gray-dark-lt">
+        <div class="empty-icon">
+          <i class="icofont-ticket icofont-4x" style="color: black;"> </i>
+         
+        </div>
+        <p class="empty-title h3">Welcome to Tickets making</p>
+        <p class="empty-subtitle text-muted">
+          Click add ticket and experience how fast this can be done 
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><circle cx="12" cy="12" r="9"></circle><line x1="9" y1="10" x2="9.01" y2="10"></line><line x1="15" y1="10" x2="15.01" y2="10"></line><path d="M9.5 15a3.5 3.5 0 0 0 5 0"></path></svg>
+          <br>
+          or just click request a design and get graphic design help. Enjoy!!
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><path d="M7 11v 8a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-7a1 1 0 0 1 1 -1h3a4 4 0 0 0 4 -4v-1a2 2 0 0 1 4 0v5h3a2 2 0 0 1 2 2l-1 5a2 3 0 0 1 -2 2h-7a3 3 0 0 1 -3 -3"></path></svg>
+        </p>
+        <div class="empty-action m-2">
+        
+            <a href="/utickets/tickets/addticket/<%- allevents.ename %>" class="btn btn-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              Add ticket
+            </a>
+          
+            <a href="#" class="btn btn-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><rect x="13" y="8" width="8" height="12" rx="1"></rect><path d="M18 8v-3a1 1 0 0 0 -1 -1h-13a1 1 0 0 0 -1 1v12a1 1 0 0 0 1 1h9"></path><line x1="16" y1="9" x2="18" y2="9"></line></svg>
+              Designing help
+            </a>
+          
+        </div>
+       
+
+
+        <div class="row">
+          <div class="col-md-6 col-xl-3">
+            <div class="card card-sm">
+              <div class="card-body d-flex align-items-center">
+                <span class="bg-dark-overlay stamp mr-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><line x1="15" y1="5" x2="15" y2="7"></line><line x1="15" y1="11" x2="15" y2="13"></line><line x1="15" y1="17" x2="15" y2="19"></line><path d="M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-3a2 2 0 0 0 0 -4v-3a2 2 0 0 1 2 -2"></path></svg>
+                  
+                </span>
+                <div class="mr-3 lh-sm ">
+                  <div class="strong">
+                    Tickets Info
+                  </div>
+                  <div class="text-muted">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path><polyline points="7 9 12 4 17 9"></polyline><line x1="12" y1="4" x2="12" y2="16"></line></svg>
+                    Upload ticket artwork </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <div class="card card-sm">
+              <div class="card-body d-flex align-items-center">
+                <span class="bg-dark-overlay stamp mr-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><rect x="4" y="4" width="6" height="6" rx="1"></rect><line x1="7" y1="17" x2="7" y2="17.01"></line><rect x="14" y="4" width="6" height="6" rx="1"></rect><line x1="7" y1="7" x2="7" y2="7.01"></line><rect x="4" y="14" width="6" height="6" rx="1"></rect><line x1="17" y1="7" x2="17" y2="7.01"></line><line x1="14" y1="14" x2="17" y2="14"></line><line x1="20" y1="14" x2="20" y2="14.01"></line><line x1="14" y1="14" x2="14" y2="17"></line><line x1="14" y1="20" x2="17" y2="20"></line><line x1="17" y1="17" x2="20" y2="17"></line><line x1="20" y1="17" x2="20" y2="20"></line></svg>
+
+                </span>
+                <div class="mr-3 lh-sm">
+                  <div class="strong">
+                    Barcode
+                  </div>
+                  <div class="text-muted">
+                    <i class="icofont-hand-drag1"> </i> Add and drag barcode
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <div class="card card-sm">
+              <div class="card-body d-flex align-items-center">
+                <span class="bg-dark-overlay stamp mr-3">
+                  <i class="icofont-numbered icofont-2x"></i> 
+                </span>
+                <div class="mr-3 lh-sm">
+                  <div class="strong">
+                    Serial number
+                  </div>
+                  <div class="text-muted">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><circle cx="6" cy="10" r="2"></circle><line x1="6" y1="4" x2="6" y2="8"></line><line x1="6" y1="12" x2="6" y2="20"></line><circle cx="12" cy="16" r="2"></circle><line x1="12" y1="4" x2="12" y2="14"></line><line x1="12" y1="18" x2="12" y2="20"></line><circle cx="18" cy="7" r="2"></circle><line x1="18" y1="4" x2="18" y2="5"></line><line x1="18" y1="9" x2="18" y2="20"></line></svg>
+                    Adjust the sequence</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <div class="card card-sm">
+              <div class="card-body d-flex align-items-center">
+                <span class="bg-dark-overlay stamp mr-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><circle cx="12" cy="12" r="3"></circle></svg>                  
+                </span>
+                <div class="mr-3 lh-sm">
+                  <div class="strong">
+                    Settings
+                  </div>
+                  <div class="text-muted">
+                    <i class="icofont-instrument"> </i>
+                    Finalise ticket
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+<% } %> 
+
+
+  

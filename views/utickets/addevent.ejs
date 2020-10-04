@@ -1,0 +1,539 @@
+
+<% if (eventdata !== null) { %>
+  <div class="content">
+    <div class="container-xl">
+      <!-- Page title -->
+      <div class="page-header">
+        <div class="row align-items-center">
+          <div class="col-auto">
+            <!-- Page pre-title -->
+            <div class="page-pretitle">
+              Overview of
+            </div>
+            <h2 class="page-title">
+              Eddit event
+            </h2>
+          </div>
+          <!-- Page title actions -->
+          <div class="col-auto ml-auto d-print-none">
+            <span class="d-none d-sm-inline">
+              <a href="#" class="btn btn-primary">
+                Request a design
+              </a>
+            </span>
+            <a href="#" class="btn btn-primary"> 
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="17" x2="12" y2="17.01"></line><path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4"></path></svg>               
+                 Need help
+            </a>
+            <a href="#" class="btn btn-primary ml-3 d-sm-none btn-icon" data-toggle="modal" data-target="#modal-report" aria-label="Create new report">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row row-deck row-cards">
+        <div class="card  bg-light">
+          <div class="card-header">
+            <h3 class="card-title">Event details</h3>
+          </div>
+          <div class="card-body">
+            <form class="needs-validation" action="/utickets/updateevent/<%- eventdata.eventid %>" method="POST" novalidate>
+              <div class="form-group mb-1 row">
+                <div class="col-md-3 mb-1">
+                  <label class="form-label required">Name</label>
+                  <div class="input-group  mb-3">
+                    <input type="text" class="form-control" name="ename" value="<%- eventdata.ename %>" id="ename" placeholder="Event name" required>
+                      <span class="input-group-text">
+                        <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Event must be 4 or more characters and it should appear here as on the tickets.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                      </span>
+                      <div class="invalid-feedback">Invalid Event name</div>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-1">
+                  <label class="form-label required">Type</label>
+                  <div class="input-group">
+                    <select name="etype" id="etype" class="form-select" required>
+                      <option value="<%- eventdata.etype %>" selected><%- eventdata.etype %></option>
+                      <option value="Gospel">Gospel</option>
+                      <option value="Comedy">Comedy</option>
+                      <option value="Movie">Movie</option>
+                      <option value="circular">circular</option>
+                      <option value="Meeting">Meeting</option>
+                    </select>
+                    <span class="input-group-text">
+                      <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Event type consist of what we be done in that event, you must choose from provided options.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                    </span>
+                    <div class="invalid-feedback">Please choose the event type</div>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label class="form-label required">Due Date</label>
+                  <div class="input-group  mb-1">
+                    <input type="date" name="edate"  class="form-control" value="<%- eventdata.edate %>" required>
+                      <span class="input-group-text">
+                        <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Enter a valid date, When is the event?.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                      </span>
+                      <div class="invalid-feedback">Invalid date</div>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label class="form-label required">Time</label>
+                  <div class="input-group  mb-1">
+                    <input type="time" class="form-control" name="etime" value="<%- eventdata.etime %>" required>
+                      <span class="input-group-text">
+                        <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;When is the event will start, enter valid time and specify if it is AM or PM.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                      </span>
+                      <div class="invalid-feedback">Invalid time</div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label class="form-label required">Venue</label>
+                  <div class="input-group  mb-1">
+                    <input type="text" class="form-control" name="venue" id="venue" value="<%- eventdata.venue %>" placeholder="Venue" required>
+                      <span class="input-group-text">
+                        <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Where will it hosted, enter the name of builing, plot, stadium or arena.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                      </span>
+                      <div class="invalid-feedback">Invalid venue</div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label class="form-label required">Address</label>
+                  <div class="input-group  mb-1">
+                    <input type="text" class="form-control" name="adress" id="adress" value="<%- eventdata.adress %>" placeholder="Address" required>
+                      <span class="input-group-text">
+                        <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Venue adress where is it located? enter the disticty, city ot known sector.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                      </span>
+                      <div class="invalid-feedback">Invalid address</div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-1">
+                  <label class="form-label">More about address</label>
+                  <div class="input-group  mb-3">
+                    <input type="text" class="form-control" name="moreadress" id="moreadress" value="<%- eventdata.moreadress %>" placeholder="More about place" required>
+                      <span class="input-group-text">
+                        <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Clearly enter the nearby known infrastrucure, like name of house, place or cartie.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                      </span>
+                      <div class="invalid-feedback">Invalid addess</div>
+                  </div>
+                </div>
+              </div>
+  
+             
+              <h3 class="card-header">Perfomer information</h3>
+              
+  
+              <div class="form-group mb-3 pt-3 row">
+                <div class="col-md-4 mb-1">
+                  <label class="form-label required">Main Perfomer or speaker names</label>
+                  <div class="input-group  mb-3">
+                    <input type="text" class="form-control" name="perfomernames" id="perfomernames" value="<%- eventdata.perfomernames %>" placeholder="Names" required>
+                      <span class="input-group-text">
+                        <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Enter main Perfomer or speaker names, it should be the real names or stage name. &lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                      </span>
+                      <div class="invalid-feedback">Invalid Perfomer or speaker names</div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-1">
+                  <label class="form-label required">Featuring Perfomer</label>
+                  <div class="input-group  mb-3">
+                    <input type="text" class="form-control" name="ftperfomernames" id="ftperfomernames" value="<%- eventdata.ftperfomernames %>" placeholder="Names" required>
+                      <span class="input-group-text">
+                        <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Enter featuring Perfomer or speaker names, it should be the real names or stage name. &lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                      </span>
+                      <div class="invalid-feedback">Invalid featuring Perfomer or speaker names</div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-1">
+                  <label class="form-label">Other Perfomer</label>
+                  <div class="input-group  mb-3">
+                    <input type="text" class="form-control" name="otherperfomernames" id="otherperfomernames" value="<%- eventdata.otherperfomernames %>" placeholder="Names" required>
+                      <span class="input-group-text">
+                        <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Enter other Perfomer or speaker names, it should be the real names or stage name. &lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                      </span>
+                      <div class="invalid-feedback">Invalid other Perfomer or speaker names</div>
+                  </div>
+                </div>
+  
+              </div>
+  
+              <h3 class="card-header p-0">Pricing information</h3>
+              <div class="form-group mb-3 pt-3 row">
+                <div class="col-md-2 mb-1">
+                  <label class="form-label">Choose currency</label>
+                  <select name="currency" id="currency" class="form-select">
+                    <option value="<%- eventdata.currency %>" selected><%- eventdata.currency %></option>
+                    <option value="Rwf">Rwf</option>
+                    <option value="US Dollars">US Dollars</option>
+                    <option value="UG Shillings">UG Shillings</option>
+                    <option value="UK Ereus">UK Ereus</option>
+                  </select>
+                </div>
+                <div class="col-md-2 mb-1">
+                  <label class="form-label required">Regulars ticket</label>
+                  <div class="input-group mb-3">
+                    <input type="number" class="form-control" min="1" max="1000000" name="regularprice" id="regularprice" value="<%- eventdata.regularprice %>" placeholder="Price" pattern="[0-9]+(\\.[0-9][0-9]?)?" required>
+                    <span class="input-group-text">
+                        <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Regural ticket Price is the cost of regural tickets, it should be only numbers. &lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                      </span>
+                    <div class="invalid-feedback">Invalid regular tickets Price</div>
+                  </div>
+                </div>
+                <div class="col-md-2 mb-1">
+                  <label class="form-label required">VIP ticket</label>
+                  <div class="input-group mb-3">
+                    <input type="number" class="form-control" min="1" max="1000000" name="vipprice" value="<%- eventdata.vipprice %>" id="vipprice" placeholder="Price" pattern="[0-9]+(\\.[0-9][0-9]?)?" required>
+                    <span class="input-group-text">
+                        <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;VIP  ticket Price is the cost of VIP  tickets, it should be only numbers. &lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                      </span>
+                    <div class="invalid-feedback">Invalid VIP tickets Price</div>
+                  </div>
+                </div>
+                <div class="col-md-2 mb-1">
+                  <label class="form-label">VVIP ticket</label>
+                  <div class="input-group mb-3">
+                    <input type="number" class="form-control" min="1" max="1000000" name="vvipprice" value="<%- eventdata.vvipprice %>" id="vvipprice" placeholder="Price" pattern="[0-9]+(\\.[0-9][0-9]?)?" required>
+                    <span class="input-group-text">
+                        <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;VVIP  ticket Price is the cost of VVIP  tickets, it should be only numbers. &lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                      </span>
+                    <div class="invalid-feedback">Invalid VVIP tickets Price</div>
+                  </div>
+                </div>
+                <div class="col-md-2 pr-0">
+                  <label class="form-label">Table of</label>
+                  <div class="input-group ">
+                      <select name="tableof" id="tableof" class="form-select">
+                        <option value="<%- eventdata.tableof %>" selected><%- eventdata.tableof %></option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                      </select>
+                    <span class="input-group-text">
+                      People
+                    </span>
+                    <div class="invalid-feedback">Invalid number of people</div>
+                  </div>
+                </div>
+                <div class="col-md-2 pl-0">
+                  <label class="form-label">Table</label>
+                  <div class="input-group mb-3">
+                    <input type="number" class="form-control" min="1" max="1000000" name="tableprice" value="<%- eventdata.tableprice %>" id="tableprice" placeholder="Price" pattern="[0-9]+(\\.[0-9][0-9]?)?" required>
+                    <span class="input-group-text">
+                        <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Table  ticket Price is the cost of Table  tickets, it should be only numbers. &lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                      </span>
+                    <div class="invalid-feedback">Invalid Table tickets Price</div>
+                  </div>
+                </div>
+              </div>
+  
+              <h3 class="card-header p-0">Image uploads</h3>
+  
+              <div class="form-group mb-3 pt-3 row">
+                <div class="mb-3">
+                  <div class="form-label required">Event artwork image</div>
+                  <div class="form-file">
+                    <input type="file" name="artwork" class="form-file-input" onchange="readURL(this);" id="customFile" required >
+              
+                    <div class="invalid-feedback">Please upload image</div>
+                    <label class="form-file-label" for="customFile">
+                      <label class="form-file-text" id="infoArea"></label>
+                      <span class="form-file-button">Browse</span>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="input-group">
+                  <div class="mt-4"><img id="imageResult" src="data:<%- eventdata.artworkname %>;base64,<%- eventdata.artworkdata %>" alt="" class="img-fluid shadow-sm mx-auto d-block"></div>
+                </div>
+              </div>
+               
+                
+            
+              <hr>
+              <div class="form-footer">
+                <a href="" class="btn btn-light">Cancel</a>
+                <button type="submit" class="btn btn-primary float-right">Edit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% } else { %>
+   
+    <div class="content">
+  <div class="container-xl">
+    <!-- Page title -->
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col-auto">
+          <!-- Page pre-title -->
+          <div class="page-pretitle">
+            Overview of
+          </div>
+          <h2 class="page-title">
+            Event
+          </h2>
+        </div>
+        <!-- Page title actions -->
+        <div class="col-auto ml-auto d-print-none">
+          <span class="d-none d-sm-inline">
+            <a href="#" class="btn btn-primary">
+              Request a design
+            </a>
+          </span>
+          <a href="#" class="btn btn-primary ml-3 d-none d-sm-inline-block" data-toggle="modal" data-target="#modal-report">
+           Skip this step <i class="icofont-arrow-right"></i>
+            
+          </a>
+          <a href="#" class="btn btn-primary ml-3 d-sm-none btn-icon" data-toggle="modal" data-target="#modal-report" aria-label="Create new report">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row row-deck row-cards">
+      <div class="card  bg-light">
+        <div class="card-header">
+          <h3 class="card-title">Event details</h3>
+        </div>
+        <div class="card-body">
+          <form class="needs-validation" action="/utickets/addnewevent" method="POST" enctype="multipart/form-data" novalidate>
+            <div class="form-group mb-1 row">
+              <div class="col-md-3 mb-1">
+                <label class="form-label required">Name</label>
+                <div class="input-group  mb-3">
+                  <input type="text" class="form-control" name="ename" id="ename" placeholder="Event name" required>
+                    <span class="input-group-text">
+                      <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Event must be 4 or more characters and it should appear here as on the tickets.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                    </span>
+                    <div class="invalid-feedback">Invalid Event name</div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-1">
+                <label class="form-label required">Type</label>
+                <div class="input-group">
+                  <select name="etype" id="etype" class="form-select" required>
+                    <option value="1">Choose event type</option>
+                    <option value="Gospel">Gospel</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Movie">Movie</option>
+                    <option value="circular">circular</option>
+                    <option value="Meeting">Meeting</option>
+                  </select>
+                  <span class="input-group-text">
+                    <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Event type consist of what we be done in that event, you must choose from provided options.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                  </span>
+                  <div class="invalid-feedback">Please choose the event type</div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label class="form-label required">Due Date</label>
+                <div class="input-group  mb-1">
+                  <input type="date" name="edate" id="" class="form-control" value="" required>
+                    <span class="input-group-text">
+                      <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Enter a valid date, When is the event?.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                    </span>
+                    <div class="invalid-feedback">Invalid date</div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label class="form-label required">Time</label>
+                <div class="input-group  mb-1">
+                  <input type="time" class="form-control" name="etime" required>
+                    <span class="input-group-text">
+                      <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;When is the event will start, enter valid time and specify if it is AM or PM.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                    </span>
+                    <div class="invalid-feedback">Invalid time</div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="form-label required">Venue</label>
+                <div class="input-group  mb-1">
+                  <input type="text" class="form-control" name="venue" id="venue" placeholder="Venue" required>
+                    <span class="input-group-text">
+                      <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Where will it hosted, enter the name of builing, plot, stadium or arena.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                    </span>
+                    <div class="invalid-feedback">Invalid venue</div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="form-label required">Address</label>
+                <div class="input-group  mb-1">
+                  <input type="text" class="form-control" name="adress" id="adress" placeholder="Address" required>
+                    <span class="input-group-text">
+                      <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Venue adress where is it located? enter the disticty, city ot known sector.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                    </span>
+                    <div class="invalid-feedback">Invalid address</div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-1">
+                <label class="form-label">More about address</label>
+                <div class="input-group  mb-3">
+                  <input type="text" class="form-control" name="moreadress" id="moreadress" placeholder="More about place" required>
+                    <span class="input-group-text">
+                      <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Clearly enter the nearby known infrastrucure, like name of house, place or cartie.&lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                    </span>
+                    <div class="invalid-feedback">Invalid addess</div>
+                </div>
+              </div>
+              
+            
+            
+            </div>
+
+           
+            <h3 class="card-header">Perfomer information</h3>
+            
+
+            <div class="form-group mb-3 pt-3 row">
+              <div class="col-md-4 mb-1">
+                <label class="form-label required">Main Perfomer or speaker names</label>
+                <div class="input-group  mb-3">
+                  <input type="text" class="form-control" name="perfomernames" id="perfomernames" placeholder="Names" required>
+                    <span class="input-group-text">
+                      <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Enter main Perfomer or speaker names, it should be the real names or stage name. &lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                    </span>
+                    <div class="invalid-feedback">Invalid Perfomer or speaker names</div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-1">
+                <label class="form-label required">Featuring Perfomer</label>
+                <div class="input-group  mb-3">
+                  <input type="text" class="form-control" name="ftperfomernames" id="ftperfomernames" placeholder="Names" required>
+                    <span class="input-group-text">
+                      <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Enter featuring Perfomer or speaker names, it should be the real names or stage name. &lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                    </span>
+                    <div class="invalid-feedback">Invalid featuring Perfomer or speaker names</div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-1">
+                <label class="form-label">Other Perfomer</label>
+                <div class="input-group  mb-3">
+                  <input type="text" class="form-control" name="otherperfomernames" id="otherperfomernames" placeholder="Names" required>
+                    <span class="input-group-text">
+                      <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Enter other Perfomer or speaker names, it should be the real names or stage name. &lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                    </span>
+                    <div class="invalid-feedback">Invalid other Perfomer or speaker names</div>
+                </div>
+              </div>
+
+            </div>
+
+            <h3 class="card-header p-0">Pricing information</h3>
+            <div class="form-group mb-3 pt-3 row">
+              <div class="col-md-2 mb-1">
+                <label class="form-label">Choose currency</label>
+                <select name="currency" id="currency" class="form-select">
+                  <option value="Rwf" selected >Rwf</option>
+                  <option value="US Dollars">US Dollars</option>
+                  <option value="UG Shillings">UG Shillings</option>
+                  <option value="UK Ereus">UK Ereus</option>
+                </select>
+              </div>
+              <div class="col-md-2 mb-1">
+                <label class="form-label required">Regulars ticket</label>
+                <div class="input-group mb-3">
+                  <input type="number" class="form-control" min="1" max="1000000" name="regularprice" id="regularprice" placeholder="Price" pattern="[0-9]+(\\.[0-9][0-9]?)?" required>
+                  <span class="input-group-text">
+                      <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Regural ticket Price is the cost of regural tickets, it should be only numbers. &lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                    </span>
+                  <div class="invalid-feedback">Invalid regular tickets Price</div>
+                </div>
+              </div>
+              <div class="col-md-2 mb-1">
+                <label class="form-label required">VIP ticket</label>
+                <div class="input-group mb-3">
+                  <input type="number" class="form-control" min="1" max="1000000" name="vipprice" id="vipprice" placeholder="Price" pattern="[0-9]+(\\.[0-9][0-9]?)?" required>
+                  <span class="input-group-text">
+                      <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;VIP  ticket Price is the cost of VIP  tickets, it should be only numbers. &lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                    </span>
+                  <div class="invalid-feedback">Invalid VIP tickets Price</div>
+                </div>
+              </div>
+              <div class="col-md-2 mb-1">
+                <label class="form-label">VVIP ticket</label>
+                <div class="input-group mb-3">
+                  <input type="number" class="form-control" min="1" max="1000000" name="vvipprice" id="vvipprice" placeholder="Price" pattern="[0-9]+(\\.[0-9][0-9]?)?" required>
+                  <span class="input-group-text">
+                      <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;VVIP  ticket Price is the cost of VVIP  tickets, it should be only numbers. &lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                    </span>
+                  <div class="invalid-feedback">Invalid VVIP tickets Price</div>
+                </div>
+              </div>
+              <div class="col-md-2 pr-0">
+                <label class="form-label">Table of</label>
+                <div class="input-group ">
+                    <select name="tableof" id="tableof" class="form-select">
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="8" selected>8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    </select>
+                  <span class="input-group-text">
+                    People
+                  </span>
+                  <div class="invalid-feedback">Invalid number of people</div>
+                </div>
+              </div>
+              <div class="col-md-2 pl-0">
+                <label class="form-label">Table</label>
+                <div class="input-group mb-3">
+                  <input type="number" class="form-control" min="1" max="1000000" name="tableprice" id="tableprice" placeholder="Price" pattern="[0-9]+(\\.[0-9][0-9]?)?" required>
+                  <span class="input-group-text">
+                      <span class="form-help" data-toggle="popover" data-placement="top" data-content="&lt;p&gt;Table  ticket Price is the cost of Table  tickets, it should be only numbers. &lt;/p&gt;&lt;p class='mb-0'&gt;&lt;a href=''&gt;Whatch guide about filling out this form&lt;/a&gt;&lt;/p&gt;">?</span>
+                    </span>
+                  <div class="invalid-feedback">Invalid Table tickets Price</div>
+                </div>
+              </div>
+            </div>
+
+            <h3 class="card-header p-0">Image uploads</h3>
+
+            <div class="form-group mb-3 pt-3 row">
+              <div class="mb-3">
+                <div class="form-label required">Event artwork image</div>
+                <div class="form-file">
+                  <input type="file" name="pic" class="form-file-input" onchange="readURL(this);" id="pic" required accept="image/*">
+                  <div class="invalid-feedback">Please upload image</div>
+                  <label class="form-file-label" for="customFile">
+                    <label class="form-file-text" id="infoArea">Choose image</label>
+                    <span class="form-file-button">Browse</span>
+                  </label>
+                </div>
+              </div>
+              
+              <div class="input-group">
+                <div class="mt-4"><img id="imageResult" src="#" alt="" class="img-fluid shadow-sm mx-auto d-block"></div>
+              </div>
+            </div>
+             
+              
+          
+            <hr>
+            <div class="form-footer">
+              <a href="" class="btn btn-light">Cancel</a>
+              <button type="submit" class="btn float-right btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% } %>
+
+
+    
+   

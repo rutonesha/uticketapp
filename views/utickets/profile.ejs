@@ -1,0 +1,213 @@
+<div class="container-xl">
+  <!-- Page title -->
+  <div class="page-header">
+    <div class="row align-items-center">
+      <div class="col-auto">
+        <h2 class="page-title">
+          Profile
+        </h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">My Profile</h3>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="row mb-3">
+              <div class="col-auto">
+                <i class="icofont-user-alt-3 avatar avatar-lg icofont-3x"></i>
+              </div>
+              <div class="col">
+                <div class="mb-2">
+                  <label class="form-label">Username</label>
+                  <div class="input-icon mb-3">
+                    <span class="input-icon-addon">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4" /><path d="M5.5 21v-2a4 4 0 0 1 4 -4h5a4 4 0 0 1 4 4v2" /></svg>
+                    </span>
+                    <input type="text" class="form-control" value="<%- user.username %>" name="username" id="username" placeholder="Username" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mb-2">
+              <label class="form-label">Email-Address</label>
+              <div class="mb-3">
+                <div class="input-icon mb-3">
+                <span class="input-icon-addon">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><rect x="3" y="5" width="18" height="14" rx="2"></rect><polyline points="3 7 12 13 21 7"></polyline></svg>
+                </span>
+                <input type="text" name="email" value="<%- user.email %>" class="form-control" placeholder="Email">
+              </div>
+            </div>
+            </div>
+
+            <div class="mb-2">
+              <label class="form-label">
+                Phone
+              </label>
+                   <div class="mb-3">
+                      <div class="input-icon mb-3">
+                      <span class="input-icon-addon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><path d="M4 4h5l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v5a1 1 0 0 1 -1 1a16 16 0 0 1 -16 -16a1 1 0 0 1 1 -1"></path></svg>
+                      </span>
+                      <input type="text" value="<%- user.tel %>" name="tel" class="form-control"  placeholder="(+250) 0000-0000"  required>
+                    </div>
+                  </div>
+            </div>
+            <div class="form-footer">
+              <button class="btn btn-primary btn-block">Save</button>
+            </div>
+            <div class="form-footer pb-1">
+              <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-changepassword">
+                Change password
+              </a>
+            </div>
+            <% if(typeof message !== 'undefined' && message && message.length > 0) { %>
+              <div class="alert alert-info alert-dismissible" role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <%= message %>
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              </div>
+           <% } %>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <form class="needs-validation card" action="/utickets/editprofile" method="POST" novalidate>
+        <div class="card-header">
+          <h3 class="card-title">Personal details</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6 col-md-6">
+              <div class="mb-2">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control" name="firstname" id="firstname" placeholder="First name" value="<%- user.firstname %> ">
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+              <div class="mb-2">
+                <label class="form-label">Last Name</label>
+                <input type="text" name="secondname" id="secondname" class="form-control" placeholder="Last Name" value="<%- user.secondname %> ">
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="mb-2">
+                <label class="form-label">Address</label>
+                <input type="text" name="adress" id="adress" class="form-control" placeholder="Home Address" value="<%- user.adress %> ">
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <div class="mb-2">
+                <label class="form-label">City</label>
+                <input type="text" name="city" id="city" class="form-control" placeholder="City" value="<%- user.city %> ">
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <div class="mb-2">
+                <label class="form-label">District</label>
+                <input type="text" name="district" id="district" class="form-control" placeholder="District" value="<%- user.district %> ">
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="mb-2">
+                <label class="form-label">Country</label>
+                <input type="text" name="country" id="country" class="form-control" placeholder="Country" value="<%- user.country %>">
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="mb-2 mb-0">
+                <label class="form-label">We would like to share your testmony about how our site have been good to you</label>
+                  <textarea rows="5" name="testmony" id="testmony" class="form-control" data-toggle="autosize" placeholder="Here can be your description"><%- user.testmony %></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-right">
+          <button type="submit" class="btn btn-primary">Update Profile</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal modal-blur fade" id="modal-changepassword" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Change password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+        </button>
+      </div>
+      <form class="card card-md" action="/utickets/updpass" method="POST">
+        <div class="card-body">
+          <% if(typeof message !== 'undefined' && message && message.length > 0) { %>
+            <div class="alert alert-info alert-dismissible" role="alert">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              <%= message %>
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            </div>
+         <% } %>
+          <div class="mb-2">
+            <div class="mb-2">
+              <label class="form-label required">
+                Current password
+              </label>
+                   <div class="mb-3">
+                      <div class="input-icon mb-3">
+                      <span class="input-icon-addon">
+                          <svg class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><rect x="5" y="11" width="14" height="10" rx="2"></rect><circle cx="12" cy="16" r="1"></circle><path d="M8 11v-4a4 4 0 0 1 8 0v4"></path></svg>
+                      </span>
+                      <input  type="password" name="password" placeholder="Current password" class="form-control" autocomplete="false" id="password">
+                    </div>
+                  </div>
+            </div>
+          <div class="mb-2">
+            <label class="form-label required">
+              New password
+            </label>
+                 <div class="mb-3">
+                    <div class="input-icon mb-3">
+                    <span class="input-icon-addon">
+                        <svg class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><rect x="5" y="11" width="14" height="10" rx="2"></rect><circle cx="12" cy="16" r="1"></circle><path d="M8 11v-4a4 4 0 0 1 8 0v4"></path></svg>
+                    </span>
+                    <input  type="password" name="newpass" placeholder="New password" class="form-control" id="newpass" autocomplete="false">
+                  </div>
+                </div>
+          </div>
+          <div class="mb-2">
+            <label class="form-label required">
+              Confirm new password
+            </label>
+                <div class="mb-3">
+                  <div class="input-icon mb-3">
+                    <span class="input-icon-addon">
+                        <svg class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><rect x="5" y="11" width="14" height="10" rx="2"></rect><circle cx="12" cy="16" r="1"></circle><path d="M8 11v-4a4 4 0 0 1 8 0v4"></path></svg>
+                    </span>
+                    <input  type="password" name="newpassconf" placeholder="Confirm new password" class="form-control" id="newpassconf" autocomplete="false">
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="form-footer">
+            <button type="submit" class="btn btn-primary btn-block">Create new password</button>
+          </div>
+        </div>
+        
+      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-white mr-auto" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,66 @@
+
+#info {
+	background: #333;
+	color: #777;
+	font: bold 20px/40px Arial;
+	height: 100px;
+	position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+}
+
+.column {
+	float: left;
+	height: 100%;
+	position: relative;
+	width: 33.33333333%;
+}
+
+.column:after {
+	background: #111;
+	content: "";
+	position: absolute;
+		bottom: 0;
+		right: 0;
+		top: 0;
+	width: 1px;
+}
+
+.coords-x:before,
+.coords-y:before {
+	color: #111;
+	padding-right: 5px;
+	position: relative;
+		top: -1px;
+}
+
+.coords-x:before { content: "x" }
+.coords-y:before { content: "y" }
+.ball{
+	display: inline-block;
+	position: relative;
+	/* background: cyan; */
+	width: auto;
+	height: auto;
+	
+}
+#container {
+	
+	width: 415pt;
+	height: 165pt;
+	/* background: #777; */
+	
+}
+.contback{
+	/* background-image: ; */
+	/* background: url('/img/services/KCCC.jpg'); */
+	/* display: inline-block; */
+	/* width: 415pt; */
+	/* height: 165pt; */
+	/* background: #777; */
+}
+h1 {
+	font-size: 40px;
+	line-height: 60px;
+}
